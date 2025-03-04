@@ -3,7 +3,7 @@ session_start();
 ?>
 <html>
 <head>
-	<!-- <meta http-equiv="refresh" content="60;." /> -->
+	<meta http-equiv="refresh" content="60;." />
 	<title>"<?php echo php_uname('n'); ?>" - titids</title>
 	<link rel="icon" href="favicon.ico" type="image/x-icon" />
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
