@@ -9,7 +9,6 @@ alert http any any -> any any (msg:"Windows executable file upload via HTTP dete
 alert http any any -> any any (msg:"Linux executable file upload via HTTP detected"; content:"|7f 45 4c 46|"; http_client_body; flow:to_server,established; sid:1000007; rev:2;)
 alert http any any -> any any (msg:"Suspicious PHP file upload via HTTP detected"; content:"<?php"; http_client_body; flow:to_server,established; sid:1000008; rev:1;)
 
-
 # Portscan with NMAP rules
 alert tcp any any -> any [21,22,23,25,53,80,88,110,135,137,138,139,143,161,389,443,445,465,514,587,636,853,993,995,1194,1433,1720,3306,3389,8080,8443,11211,27017,51820] (msg:"Possible port scan (NMAP -sS)"; flow:to_server,stateless; flags:S; window:1024; tcp.mss:1460; threshold:type threshold, track by_src, count 3, seconds 60; classtype:attempted-recon; sid:3400001; priority:2; rev:1;)
 alert tcp any any -> any 4444 (msg:"Possible Metasploit shell TCP"; classtype:trojan-activity; sid:3400002; priority:1; rev:2;)
