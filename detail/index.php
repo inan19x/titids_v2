@@ -7,13 +7,21 @@ $ip=$_REQUEST["ip"];
 list($byte1,$byte2,$byte3,$byte4)=explode(".",$ip);
 if($ip!=""){
 	if($byte1=="10" OR $byte1=="172" OR $byte1=="192"){
-		echo "<div style=\"padding:10px;\">Hostname dan GeoIP tidak ter-<em>resolv</em>. Alamat IP ini mungkin adalah <a href=\"http://www.faqs.org/rfcs/rfc1918.html\" target=\"_blank\" >RFC 1918</a> (Private Internet).";
+		echo "<div style=\"padding:10px;\">Could not resolve IP. This IP Address must be private IP ranges. Please refer to <a href=\"http://www.faqs.org/rfcs/rfc1918.html\" target=\"_blank\" >RFC 1918</a>.";
 	}
 	else{
 	echo "<div style=\"padding:10px;\">";
-		$country=file_get_contents("https://api.hostip.info/get_html.php?ip=$ip");
-		$hostname=gethostbyaddr($ip);
-		echo "<table><tr><td rowspan=\"2\"><img src=\"https://api.hostip.info/flag.php?ip=$ip\" /></td><td style=\"padding-left:10px;\"><font color=\"#0000ff\">$hostname</font></td></tr><tr><td style=\"padding-left:10px;\">$country</td></tr></table>";
+		$response=file_get_contents("http://ip-api.com/json/$ip");
+		$data=json_decode($response, true);
+		$city=$data['city'];
+		$region=$data['regionName'];
+		$country=$data['country'];
+		$isp=$data['isp'];
+		$as=$data['as'];
+		$lat=$data['lat'];
+		$lon=$data['lon'];
+		$cc=$data['countryCode'];
+		echo "<table border=\"0\"><tr><td style=\"height:20px;\">ISP</td><td>:</td><td> $isp ($as)</td></tr><tr><td>City</td><td>:</td><td style=\"height:20px;\"> $city, $region (Lat: $lat, Lon: $lon)</td></tr><tr><td style=\"height:20px;\">Country</td><td>:</td><td> $country <img src=\"https://flagsapi.com/$cc/flat/16.png\" alt=\"CC Flag\"/></td></tr></table>";
 	}
 	echo "</div>";
 }

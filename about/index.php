@@ -3,14 +3,14 @@ session_start();
 if(isset($_SESSION["netadmin"])){
 ?>
 <body>
-<big><strong>titids v0.0.1</strong></big> by Ade Ismail Isnan<br/>
+<big><strong>titids v0.0.1-rebuild</strong> edition</big> by Ade Ismail Isnan<br/>
 <em>titids - Tiny Thick IDS</em>
 <p>
 System requirements:
 <ul>
 	<li>Suricata</li>
-	<li>php-5.4 or below</li>
-	<li>mysql-server</li>
+	<li>php-7 or later</li>
+	<li>mysql-server or mariadb-server</li>
 	<li>httpd or equivalent server</li>
 </ul>
 </p>

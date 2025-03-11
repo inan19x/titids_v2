@@ -6,7 +6,7 @@ include "../mysql_connect.php";
 $ip=$_REQUEST["ip"];
 
 if($ip!=""){
-	$sqllog="SELECT Alert,Time FROM INTRUDERS WHERE IP='$ip' ORDER BY Time DESC LIMIT 5";
+	$sqllog="SELECT Alert,Time FROM INTRUDERS WHERE IP='$ip' ORDER BY Time DESC LIMIT 10";
 	$qrylog=mysqli_query($mysqli,$sqllog);
 	while($rowlog=mysqli_fetch_array($qrylog)){
 		$string=$rowlog["Alert"];
