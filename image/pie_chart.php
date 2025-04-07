@@ -3,7 +3,7 @@ Header("Content-Type:image/jpeg");
 
 include "../mysql_connect.php";
 
-$sqldetection = "SELECT COUNT(Alert) AS Total, Alert FROM INTRUDERS GROUP BY Alert ORDER BY Total DESC";
+$sqldetection = "SELECT COUNT(Alert) AS Total, Alert FROM INTRUDERS GROUP BY Alert ORDER BY Total DESC Limit 10";
 $qrydetection = mysqli_query($mysqli,$sqldetection);
 $sqlsum = "SELECT COUNT(Alert) AS SUM FROM INTRUDERS";
 $qrysum = mysqli_query($mysqli,$sqlsum);
