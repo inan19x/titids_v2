@@ -137,7 +137,7 @@ $qrystatsp=mysqli_query($mysqli,$sqlstatsp);
 		<div id="ket">Attack statistics</div>
 		<table style="border:solid 1px;width:1148px;">
 		<tr style="background-color:#aaaaaa;">
-			<th>Attack Chart</th>
+			<th>Top 10 Attacks Chart</th>
 			<th>Protocol Stats</th>
 		</tr>
 		<tr>
